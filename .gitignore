@@ -1,6 +1,5 @@
-\.idea
-\venv
-*.txt
+.idea*
+.vs*
+.vscode*
+venv*
 *.pyc
-.vscode/
-.vs/

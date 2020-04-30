@@ -2,12 +2,16 @@ import os
 import re
 
 
-def get_date(time):
-    def date_formatter(date_element):
-        if (date_element < 10):
-            return ("0" + str(date_element))
-        return str(date_element)
 
+def date_formatter(date_element):
+    """Format the date."""
+    if (date_element < 10):
+        return ("0" + str(date_element))
+    return str(date_element)
+
+
+def get_date(time):
+    """Gets the date and returns the formatted date as [yyyy.mm.dd]."""
     day = date_formatter(time.day)
     month = date_formatter(time.month)
     year = date_formatter(time.year)
@@ -72,11 +76,13 @@ def get_bracketed_parts(s):
 
 
 def get_old_date(src_file):
+    """Not much functionality here."""
     # Construct date based on old date.
     return "[yyyy.mm.dd]"
 
 
 def make_new_date(old_date):
+    """What does this even do?"""
     new_date = "["
     return new_date
 
@@ -86,18 +92,27 @@ def date_format_yyyy_mm_dd():
 ##-----------------------------
 
 
-def add_date(src_file, date):
-    separated_file_name = src_file.split('.')
+def add_date(src_path, date):
+    """Add the date to the file name."""
+    if os.path.isdir(src_path):
+        new_path = src_path + ' ' + date
+        return new_path
+    
+    separated_file_name = src_path.split('.')
+    ext = separated_file_name[-1]
+    del separated_file_name[-1]
+    new_path = '.'.join(separated_file_name) + ' ' + date + '.' + ext
+    return new_path
+
+    
     #for i in range(len(separated_file_name)):
     #    print(separated_file_name[i])
 
-    ext = separated_file_name[-1]
-    del separated_file_name[-1]
-    new_file = '.'.join(separated_file_name) + ' ' + date + '.' + ext
-    return new_file
+    
 
 
 def rename_file(src_file, new_file):
+    """Rename the src_file --> new_file."""
     os.rename(src_file, new_file)
 
 
@@ -114,3 +129,4 @@ def main(src_file, time):
 
 
     rename_file(src_file, new_file)
+    return new_file

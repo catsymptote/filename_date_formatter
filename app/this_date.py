@@ -1,6 +1,7 @@
-from lib import add_date
+import add_date
 import sys
 import datetime
+import logger
 
 
 def get_time_now():
@@ -9,4 +10,5 @@ def get_time_now():
 
 
 src_file = sys.argv[1]
-add_date.main(src_file, get_time_now())
+new_file = add_date.main(src_file, get_time_now())
+logger.log('this_date', src_file, new_file)

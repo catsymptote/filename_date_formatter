@@ -1,7 +1,8 @@
-from lib import add_date
+import add_date
 import sys
 import datetime
 import os
+import logger
 
 
 def get_mod_time(src_file):
@@ -12,4 +13,5 @@ def get_mod_time(src_file):
 
 
 src_file = sys.argv[1]
-add_date.main(src_file, get_mod_time(src_file))
+new_file = add_date.main(src_file, get_mod_time(src_file))
+logger.log('file_date', src_file, new_file)
