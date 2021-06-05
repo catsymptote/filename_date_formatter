@@ -11,7 +11,7 @@ def test_get_date():
     assert len(formatted_date) == 12
 
     assert formatted_date[0] == '['
-    assert formatted_date[5] == formatted_date[8] == '.'
+    assert formatted_date[5] == formatted_date[8] == '-'
     assert formatted_date[-1] == ']'
 
     assert formatted_date[1:5] == date_str[0:4]

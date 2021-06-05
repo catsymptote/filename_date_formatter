@@ -15,17 +15,18 @@ def get_date(time):
     day = date_formatter(time.day)
     month = date_formatter(time.month)
     year = date_formatter(time.year)
-    date = "[" + year + "." + month + "." + day + "]"
+    date = "[" + year + "-" + month + "-" + day + "]"
     return date
 
 
 ## Not used yet.
 ##-----------------------------
 ## Date formats:
-## 1    [yyyy.mm.dd] (default)
-## 2    [dd.mm.yyyy]
-## 3    (dd.mm.yyyy)
-## 4    (yyyy.mm.dd)
+## 1    [yyyy-mm-dd] (default)
+## 2    [yyyy.mm.dd] (old default)
+## 3    [dd.mm.yyyy]
+## 4    (dd.mm.yyyy)
+## 5    (yyyy.mm.dd)
 
 
 def existing_date(src_file):
@@ -78,7 +79,7 @@ def get_bracketed_parts(s):
 def get_old_date(src_file):
     """Not much functionality here."""
     # Construct date based on old date.
-    return "[yyyy.mm.dd]"
+    return "[yyyy-mm-dd]"
 
 
 def make_new_date(old_date):
